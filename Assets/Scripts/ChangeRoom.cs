@@ -50,8 +50,13 @@ public class ChangeRoom : MonoBehaviour
                         ChangeRoomTo(sphereMaterials[0]);
                         FindInActiveObjectByName("buttons0").SetActive(true);
                         break;
-                    case "buttonOrangeHall":
+                    case "buttonKitWay":
                         ChangeRoomTo(sphereMaterials[2]);
+                        FindInActiveObjectByName("buttons2").SetActive(true);
+                        break;
+                    case "backToHall":
+                        ChangeRoomTo(sphereMaterials[1]);
+                        FindInActiveObjectByName("buttons1").SetActive(true);
                         break;
                 }
         } // si no colisiona con nada (todo el rato menos cuando colisiona) el material del botón mantiene su color original
