@@ -6,6 +6,7 @@ public class ChangeRoom : MonoBehaviour
 {
     // Objetos y materiales de la escena 
     public GameObject sphereBase, lastButtonOverlay;
+    public GameObject butt;
     public Material hallMaterial;
     public Material selectMaterial, noSelectMaterial;
     
@@ -15,7 +16,8 @@ public class ChangeRoom : MonoBehaviour
     // Preparo un Raycast que sale de mi raton . Los botones tienen un collider q detectará
     Ray ray;
     RaycastHit hit;
-  
+
+
     void Update()
     {
         //creo el raycast
@@ -35,7 +37,10 @@ public class ChangeRoom : MonoBehaviour
                 // acciones según boton con el que colisiono
                 switch (hit.collider.name)
                 {
-                    case "buttonEntrance": ChangeRoomTo(hallMaterial); break;
+                    case "buttonEntrance":
+                        ChangeRoomTo(hallMaterial);
+                        FindInActiveObjectByName("buttons1").SetActive(true);
+                        break;
                 }
         } // si no colisiona con nada (todo el rato menos cuando colisiona) el material del botón mantiene su color original
         else if(startButtons) { lastButtonOverlay.GetComponent<MeshRenderer>().material = noSelectMaterial; }
@@ -49,5 +54,24 @@ public class ChangeRoom : MonoBehaviour
         activeButtons.SetActive(false);
         //cambio el material que me pasen x funcion
         sphereBase.GetComponent<MeshRenderer>().material = _material;
+        
+        
+    }
+
+
+    GameObject FindInActiveObjectByName(string name)
+    {
+        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+        for (int i = 0; i < objs.Length; i++)
+        {
+            if (objs[i].hideFlags == HideFlags.None)
+            {
+                if (objs[i].name == name)
+                {
+                    return objs[i].gameObject;
+                }
+            }
+        }
+        return null;
     }
 }
