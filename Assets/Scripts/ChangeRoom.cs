@@ -9,6 +9,7 @@ public class ChangeRoom : MonoBehaviour
     public GameObject butt;
     public Material[] sphereMaterials;
     public Material selectMaterial, noSelectMaterial;
+    [SerializeField] Transform[] objs;
     
     // Control de estado de material del botón
     bool startButtons = false;
@@ -17,7 +18,11 @@ public class ChangeRoom : MonoBehaviour
     Ray ray;
     RaycastHit hit;
 
-
+    private void Start()
+    {
+        // Empiezo llenando un array con todos los transform de todos los objetos d la escena ( activos e inactivos ) para poder buscarlos luego
+        objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+    }
     void Update()
     {
         //creo el raycast
@@ -66,15 +71,19 @@ public class ChangeRoom : MonoBehaviour
     }
 
 
+
     GameObject FindInActiveObjectByName(string name)
     {
-        Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+        
         for (int i = 0; i < objs.Length; i++)
         {
+            //si esta inactivo
             if (objs[i].hideFlags == HideFlags.None)
             {
+                //y su nombre es el pasado por parametro
                 if (objs[i].name == name)
                 {
+                    //devuelve el gameobject de ese nombre
                     return objs[i].gameObject;
                 }
             }
