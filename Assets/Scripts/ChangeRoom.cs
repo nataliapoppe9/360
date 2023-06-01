@@ -7,7 +7,7 @@ public class ChangeRoom : MonoBehaviour
     // Objetos y materiales de la escena 
     public GameObject sphereBase, lastButtonOverlay;
     public GameObject butt;
-    public Material hallMaterial;
+    public Material[] sphereMaterials;
     public Material selectMaterial, noSelectMaterial;
     
     // Control de estado de material del botón
@@ -38,8 +38,15 @@ public class ChangeRoom : MonoBehaviour
                 switch (hit.collider.name)
                 {
                     case "buttonEntrance":
-                        ChangeRoomTo(hallMaterial);
+                        ChangeRoomTo(sphereMaterials[1]);
                         FindInActiveObjectByName("buttons1").SetActive(true);
+                        break;
+                    case "backToEntrance":
+                        ChangeRoomTo(sphereMaterials[0]);
+                        FindInActiveObjectByName("buttons0").SetActive(true);
+                        break;
+                    case "buttonOrangeHall":
+                        ChangeRoomTo(sphereMaterials[2]);
                         break;
                 }
         } // si no colisiona con nada (todo el rato menos cuando colisiona) el material del botón mantiene su color original

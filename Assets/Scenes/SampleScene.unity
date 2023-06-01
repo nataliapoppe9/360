@@ -379,7 +379,10 @@ MonoBehaviour:
   sphereBase: {fileID: 1874264603}
   lastButtonOverlay: {fileID: 0}
   butt: {fileID: 0}
-  hallMaterial: {fileID: 2100000, guid: b116d3d94eed5184fb929949e4581d95, type: 2}
+  sphereMaterials:
+  - {fileID: 2100000, guid: 350c1d77b86e36e4192f9c67a06da66f, type: 2}
+  - {fileID: 2100000, guid: b116d3d94eed5184fb929949e4581d95, type: 2}
+  - {fileID: 2100000, guid: 671d74d8a0a3abd43b07d9416c793a41, type: 2}
   selectMaterial: {fileID: 2100000, guid: b6e4764e2cd78c548ba6db5127239714, type: 2}
   noSelectMaterial: {fileID: 2100000, guid: 3cf06f6f3b3bcf04ea1468197c813374, type: 2}
 --- !u!4 &976003024
@@ -501,7 +504,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1003202823929888, guid: db56bc5383fdb534db512365aaf27616, type: 3}
       propertyPath: m_Name
-      value: backtoEntrance
+      value: backToEntrance
       objectReference: {fileID: 0}
     - target: {fileID: 4009947547648988, guid: db56bc5383fdb534db512365aaf27616, type: 3}
       propertyPath: m_RootOrder
